@@ -84,3 +84,24 @@ int main(int argc, char *argv[])
 	getch();
     return (0);
 }
+
+	void welcome_message(void)
+{
+
+    system("COLOR 1B");
+    system("cls");
+	printf("\n\t\t\t  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+    printf("\n\t\t\t  +      ++++++++++++++++++++++++++++++++++++++++++++++++      +");
+    printf("\n\t\t\t  +      +                                              +      +");
+    printf("\n\t\t\t  +      +                                              +      +");
+    printf("\n\t\t\t  +      + WELCOME TO PAYROLL MANAGEMENT SYSTEM 	+      +");
+    printf("\n\t\t\t  +      +                                              +      +");
+    printf("\n\t\t\t  +      +                                              +      +");
+    printf("\n\t\t\t  +      ++++++++++++++++++++++++++++++++++++++++++++++++      +");
+    printf("\n\t\t\t  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+    printf("\n\t\t\t  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+    printf("\n\t\t\t  PRESS ANY KEY TO CONTINUE");
+
+ 	fflush(stdin);
+	getch();
+}
