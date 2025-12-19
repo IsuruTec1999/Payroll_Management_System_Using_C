@@ -105,3 +105,22 @@ int main(int argc, char *argv[])
  	fflush(stdin);
 	getch();
 }
+
+void main_menu(void)
+{
+	system("cls");
+	printf("\n\t\t\t\t MENU\n\t\t\t\t ______________________________________________");
+    printf("\n\t\t\t\t| [1] MANAGE EMPLOYEES                         |");
+    printf("\n\t\t\t\t| _____________________________________________|");
+    printf("\n\t\t\t\t| [2] PRINT REPORT                             |");
+    printf("\n\t\t\t\t| _____________________________________________|");
+    printf("\n\t\t\t\t| [3] PRINT SLIP                               |");
+    printf("\n\t\t\t\t| _____________________________________________|");
+    printf("\n\t\t\t\t| [4] EXIT                                     |\n\t\t\t\t________________________________________________\n\t\t\t\t\t\t\t\t");
+
+	printf("\n\t\t\t\tPLEASE CHOOSE A NUMBER IN THE BOX ABOVE:");
+
+
+
+	
+}
