@@ -124,3 +124,51 @@ void main_menu(void)
 
 	
 }
+void manage_employee(void)
+{
+	char menuOpt;
+	int isExit = 0;
+	do
+	{
+		emp_menu();
+		fflush(stdin);
+		menuOpt = (char)getch();
+		switch(menuOpt)
+		{
+			case '1':
+			{
+				add_employee();
+				break;
+			}
+			case '2':
+			{
+				delete_employee();
+				break;
+			}
+			case '3':
+			{
+				edit_employee();
+				break;
+			}
+			case '4':
+			{
+				search_employee();
+				break;
+			}
+			case '5':
+			{
+
+				isExit = 1;
+				fflush(stdin);
+				break;
+			}
+			default:
+			{
+
+
+				printf("Invalid Option!");
+				getch();
+			}
+		}
+	}while(isExit == 0);
+}
