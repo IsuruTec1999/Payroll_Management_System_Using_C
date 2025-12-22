@@ -218,3 +218,44 @@ void add_employee(void)
 	printf("Done Entering New Record >>> ");
 	getch();
 }
+
+void delete_employee(void)
+{
+	char name[50];
+	char address[100];
+	char phone[11];
+	char id[5];
+	char idDel[5];
+	float salary;
+	float hours;
+	FILE *fp1;
+	FILE *fp2;
+	fp1 = fopen(EMP_FILE, "r");
+	fp2 = fopen(TMP_FILE, "w");
+	system("cls");
+	printf("DELETE EMPLOYEE\n");
+	printf("Enter Employee ID to Delete : ");
+	fflush(stdin);
+	gets(idDel);
+	do
+	{
+		fscanf(fp1, "%[^/]%*c%[^/]%*c%[^/]%*c%[^/]%*c%f %f%*c", name, address, phone, id, &salary, &hours);
+		if(feof(fp1))
+		{
+			break;
+		}
+		if((strcmp(id, idDel)) != 0)
+		{
+			fprintf(fp2, "%s/%s/%s/%s/%.2f %.2f\n", name, address, phone, id, salary, hours);
+		}
+	}while(!(feof(fp1)));
+	fflush(fp2);
+	fclose(fp1);
+	fclose(fp2);
+	remove(EMP_FILE);
+	rename(TMP_FILE, EMP_FILE);
+
+	printf("Done Deleting >>> ");
+	fflush(stdin);
+	getch();
+}
