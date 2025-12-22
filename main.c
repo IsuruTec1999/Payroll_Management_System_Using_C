@@ -172,3 +172,49 @@ void manage_employee(void)
 		}
 	}while(isExit == 0);
 }
+void add_employee(void)
+{
+	char name[50];
+	char address[100];
+	char phone[11];
+	char id[5];
+	float salary;
+	float hours;
+	FILE *fp;
+	fp = fopen(EMP_FILE, "a+");
+	do
+	{
+		fscanf(fp, "%[^/]%*c%[^/]%*c%[^/]%*c%[^/]%*c%f %f%*c", name, address, phone, id, &salary, &hours);
+		if(feof(fp))
+		{
+			break;
+		}
+	}while(!(feof(fp)));
+
+	system("cls");
+	printf("Add Employee Details\n");
+ 	printf("Name: ");
+	fflush(stdin);
+	gets(name);
+	printf("Address: ");
+	fflush(stdin);
+	gets(address);
+	printf("Phone: ");
+	fflush(stdin);
+	gets(phone);
+	printf("ID: ");
+	fflush(stdin);
+	gets(id);
+	printf("Salary: ");
+	fflush(stdin);
+	scanf("%f", &salary);
+	printf("Hours: ");
+	fflush(stdin);
+	scanf("%f", &hours);
+	fprintf(fp, "%s/%s/%s/%s/%.2f %.2f\n", name, address, phone, id, salary, hours);
+	fflush(fp);
+	fclose(fp);
+
+	printf("Done Entering New Record >>> ");
+	getch();
+}
