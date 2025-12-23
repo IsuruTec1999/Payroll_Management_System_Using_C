@@ -307,3 +307,43 @@ void edit_employee(void)
 	fflush(stdin);
 	getch();
 }
+
+void search_employee(void)
+{
+	char name[50];
+	char address[100];
+	char phone[11];
+	char id[5];
+	char idSearch[5];
+	float salary;
+	float hours;
+	FILE *fp;
+	fp = fopen(EMP_FILE, "r");
+	system("cls");
+	printf("SEARCH EMPLOYEE DETAILS\n");
+	printf("Enter the Employee ID to Search : ");
+	fflush(stdin);
+	gets(idSearch);
+	do
+	{
+		fscanf(fp, "%[^/]%*c%[^/]%*c%[^/]%*c%[^/]%*c%f %f%*c", name, address, phone, id, &salary, &hours);
+		if(feof(fp))
+		{
+			break;
+		}
+		if((strcmp(id, idSearch)) == 0)
+		{
+
+			printf("Name: %s\n", name);
+			printf("Address: %s\n", address);
+			printf("Phone: %s\n", phone);
+			printf("ID: %s\n", id);
+			printf("Salary: %.2f\n", salary);
+			printf("Hours: %.2f\n\n", hours);
+			printf("Press ENTER to continue >>> ");
+			fflush(stdin);
+			getch();
+		}
+	}while(!(feof(fp)));
+	fclose(fp);
+}
