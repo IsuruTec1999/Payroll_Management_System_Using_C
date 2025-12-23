@@ -259,3 +259,51 @@ void delete_employee(void)
 	fflush(stdin);
 	getch();
 }
+void edit_employee(void)
+{
+	char name[50];
+	char address[100];
+	char phone[11];
+	char id[5];
+	char idEdit[5];
+	float salary;
+	float hours;
+	FILE *fp1;
+	FILE *fp2;
+	fp1 = fopen(EMP_FILE, "r");
+	fp2 = fopen(TMP_FILE, "w");
+	system("cls");
+	printf("EDIT EMPLOYEE DETAILS\n");	
+	printf("Enter Employee ID to Edit : ");
+	fflush(stdin);
+	gets(idEdit);
+	do
+	{
+		fscanf(fp1, "%[^/]%*c%[^/]%*c%[^/]%*c%[^/]%*c%f %f%*c", name, address, phone, id, &salary, &hours);
+		if(feof(fp1))
+		{
+			break;
+		}
+		if((strcmp(id, idEdit)) == 0)
+		{
+			system("cls");
+			printf("EDIT EMPLOYEE DETAILS\n");
+			printf("Enter new basic salary : ");
+			fflush(stdin);
+			scanf("%f", &salary);
+			printf("Enter the new number of hours worked : ");
+			fflush(stdin);
+			scanf("%f", &hours);
+		}
+		fprintf(fp2, "%s/%s/%s/%s/%.2f %.2f\n", name, address, phone, id, salary, hours);
+	}while(!(feof(fp1)));
+	fflush(fp2);
+	fclose(fp1);
+	fclose(fp2);
+	remove(EMP_FILE);
+	rename(TMP_FILE, EMP_FILE);
+
+	printf("Done Editing >>> ");
+	fflush(stdin);
+	getch();
+}
