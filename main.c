@@ -347,3 +347,45 @@ void search_employee(void)
 	}while(!(feof(fp)));
 	fclose(fp);
 }
+
+void print_report(void)
+{
+	char name[50];
+	char address[100];
+	char phone[11];
+	char id[5];
+	float salary;
+	float hours;
+	float epf;
+	float etf;
+	float netSal;
+	float ot, otRate, otHrs;
+	FILE *fp;
+	fp = fopen(EMP_FILE, "r");
+
+	do
+	{
+		fscanf(fp, "%[^/]%*c%[^/]%*c%[^/]%*c%[^/]%*c%f %f%*c", name, address, phone, id, &salary, &hours);
+		if(feof(fp))
+		{
+			break;
+		}
+		epf = salary * EPF_RATE;
+		etf = salary * ETF_RATE;
+		otHrs = hours - GEN_TIME;
+		otRate = salary / GEN_TIME;
+		if(otHrs > 0)
+		{
+			ot = otHrs * otRate;
+		}
+		else
+		{
+			ot = 0;
+			otHrs = 0;
+		}
+		netSal = salary - (epf + etf) + ot;
+		printf("%5s %5.2f %3.2f %3.2f %3.2f %5.2f %5.2f %5.2f %5.2f\n", id, salary, hours, otHrs, ot, epf, etf, netSal);
+		getch();
+	}while(!(feof(fp)));
+	fclose(fp);
+}
